@@ -1,21 +1,27 @@
 var cat, mouse;
-//var catImg, mouseImg;
+var catImg, mouseImg;
 function preload() {
     //load the images here
 
-    //catImg.loadImage("cat1.png")
-    //mouseImg.loadImage("mouse1.png")
+    catImg = loadImage("cat1.png")
+    mouseImg = loadImage("mouse1.png")
 }
 
 function setup(){
     createCanvas(1000,800);
     //create tom and jerry sprites here
-cat = createSprite(800, 400, 100, 50);
-//cat.addImage(catImg)
+cat = createSprite(800, 400, 100, 50); 
+    cat.addImage("cats", catImg);
+cat.scale = 0.25
+cat.setCollider("rectangle", 0, 0, 100, 50)
+//cat.debug = true;
+
 
 mouse = createSprite(500, 400, 30, 30);
 mouse.shapeColor = "brown";
-//mouse.addImage(mouseImg)
+mouse.addImage("mice", mouseImg);
+mouse.scale = 0.15
+//mouse.debug = true;
 }
 
 function draw() {
@@ -26,7 +32,6 @@ cat.velocityX = -5;
 
 if(cat.isTouching(mouse)){
     cat.velocityX = 0;
-    mouse.shapeColor = "red";
 }
 
 console.log(frameCount);
